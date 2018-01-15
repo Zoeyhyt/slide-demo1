@@ -9,26 +9,11 @@
      
 }
 .images{
-    position: relative;
-
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.5s;
 }
 .images >img{
     width:100%;
-    position: absolute;
-    transition: all .3s; 
-    top:0;
-}
-.images >img.current{
-    left:0;
-    transform: translateX(0);
-    z-index: 1;
-}
-.images >img.leave{
-    left:0;
-    transform: translateX(-100%);
-    z-index: 1;
-}
-.images >img.enter{
-    left:0;
-    transform: translateX(100%);
+  
 }

@@ -1,56 +1,45 @@
-let n 
-initialize()
-let timer = setInterval(() =>{
-    makeLeave(getImage(n))
-    .one('transitionend',(e) =>{
-        makeEnter($(e.currentTarget))
-    })
-    makeCurrent(getImage(n+1))
-    n+=1
-},2000)
+let $buttons = $('#buttonWrapper>button')
+let $slides = $('#slides')
+let $images = $slides.children('img')
+let $firstCopy = $images.eq(0).clone(true)
+let $lastCopy = $images.eq($images.length-1).clone(true)
 
-document.addEventListener('visibilitychange',function(){
-    if(document.hidden){
-        window.clearInterval(timer)
+$slides.append($firstCopy)
+$slides.prepend($lastCopy)
+
+$slides.css({transform:'translateX(-300px)'})
+
+let current = 0
+
+$buttons.eq(0).on('click',function(){
+    if(current == 2){
+        $slides.css({transform:'translateX(-1200px)'})
+        .one('transitionend',function(){
+            $slides.hide()
+            .offset()
+            $slides.css({transform:'translateX(-300px)'})
+            .show()
+        })
     }else{
-        timer = setInterval(() =>{
-            makeLeave(getImage(n))
-            .one('transitionend',(e) =>{
-                makeEnter($(e.currentTarget))
-            })
-            makeCurrent(getImage(n+1))
-            n+=1
-        },2000)
+        $slides.css({transform:'translateX(-300px)'})
+        current = 0
     }
 })
-
-
-function x(n){
-    if(n>3){
-        n = n%3
-        if(n === 0){
-            n = 3
-        }
+$buttons.eq(1).on('click',function(){
+    $slides.css({transform:'translateX(-600px)'})
+    current = 1
+})
+$buttons.eq(2).on('click',function(){
+    if(current == 0){
+        $slides.css({transform:'translateX(0)'})
+        .one('transitionend',function(){
+            $slides.hide()
+            .offset()
+            $slides.css({transform:'translateX(-900px)'})
+            .show()
+        })
+    }else{
+        $slides.css({transform:'translateX(-900px)'})
+        current = 2
     }
-    return n
-}
-
-function getImage(n){
-    return $(`.images>img:nth-child(${x(n)})`)
-}
-
-function initialize(){
-    n = 1
-    $(`.images>img:nth-child(${n})`).addClass('current')
-    .siblings().addClass('enter')
-}
-function makeCurrent($node){
-    return $node.removeClass('enter leave').addClass('current')
-}
-function makeLeave($node){
-    return $node.removeClass('enter current').addClass('leave')
-    
-}
-function makeEnter($node){
-    return $node.removeClass('current leave').addClass('enter')
-}
+})
