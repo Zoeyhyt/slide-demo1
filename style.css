@@ -20,8 +20,10 @@
  }
 
 .window{
-    width:300px;
-    height: 200px;
+    box-shadow: 0 0 3px #AAAAAA;
+    vertical-align: middle;
+    width:668px;
+    height: 445px;
     overflow: hidden;  
 }
 .images{

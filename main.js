@@ -4,7 +4,7 @@ let $images = $slides.children('img')
 let current = 0
 
 makeFakeSlide()
-$slides.css({transform:'translateX(-300px)'})
+$slides.css({transform:'translateX(-920px)'})
 bindEvents()
 $(next).on(`click`,function(){
     goToSlide(current+1)
@@ -42,20 +42,20 @@ function goToSlide(index){
     }
     if (current === $buttons.length-1 && index === 0){
     //最后一张到第一张
-        $slides.css({transform:`translateX(${-($buttons.length + 1)*300}px)`})
+        $slides.css({transform:`translateX(${-($buttons.length + 1)*668}px)`})
         .one('transitionend',function(){
             $slides.hide().offset()
-            $slides.css({transform:`translateX(${-(index+1)*300}px)`}).show()
+            $slides.css({transform:`translateX(${-(index+1)*668}px)`}).show()
         })
     }else if(current === 0 && index === $buttons.length-1){
         //第一张到最后一张
         $slides.css({transform:`translateX(0)`})
         .one('transitionend',function(){
             $slides.hide().offset()
-            $slides.css({transform:`translateX(${-(index+1)*300}px)`}).show()
+            $slides.css({transform:`translateX(${-(index+1)*668}px)`}).show()
         })
     }else{
-        $slides.css({transform:`translateX(${-(index+1)*300}px)`})
+        $slides.css({transform:`translateX(${-(index+1)*668}px)`})
     }
     current = index
 }
