@@ -68,6 +68,19 @@ function makeFakeSlide(){
     $slides.prepend($lastCopy)
 }
 
+$(clickMe).on('click',function(){
+    $(popover).show()
+    setTimeout(function(){
+        $(document).one('click',function(){
+            $(popover).hide()
+        })
+    },0)
+})
+$(container).on('click',function(e){
+    e.stopPropagation()
+})
+
+
 
 
 
