@@ -15,12 +15,12 @@ $(previous).on(`click`,function(){
 
 let timer = setInterval(function(){
     goToSlide(current+1)
-},2000)
+},2500)
 
-$(`.container`).on(`mouseenter`,function(){
+$(`.window`).on(`mouseenter`,function(){
     window.clearInterval(timer)
 })
-$(`.container`).on(`mouseleave`,function(){
+$(`.window`).on(`mouseleave`,function(){
     timer = setInterval(function(){
         goToSlide(current+1)
     },2000)
