@@ -70,17 +70,21 @@ $(document).ready(function(){
         $slides.prepend($lastCopy)
     }
 
+    
     $(clickMe).on('click',function(){
-        $(popover).show()
+        $(popover).toggle()
         setTimeout(function(){
             $(document).one('click',function(){
                 $(popover).hide()
             })
         },0)
     })
+    
     $(container).on('click',function(e){
         e.stopPropagation()
     })
+
+
 })
 
 
