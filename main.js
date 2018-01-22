@@ -72,7 +72,7 @@ $(document).ready(function(){
 
     
     $(clickMe).on('click',function(){
-        $(popover).addClass(`.hide`)
+        $(popover).toggle()
         setTimeout(function(){
             $(document).one('click',function(){
                 $(popover).hide()
